@@ -1,54 +1,47 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-
-int _printf(char *n, ...)
+int _printf(const char *format, ...)
 {
-	va_list ap;
-	va_start(ap, n);
-	unsigned i = 0;
-	char *start = n;
+	va_list args;
+	va_start(args, format);
 
-	while (*n != '\0')
+	int count = 0; 
+
+	while (*format != '\0')
 	{
-		i++;
-		n++;
-	}
-	n = start;
-
-	while (*n != '\0')
-	{
-
-		if (*n == '%' && *(n + 1) == 's')
+		if (*format == '%')
 		{
-			int s = 0;
-
-			char *str = va_arg(ap, char *);
-			char *strstart = str;
-
-			while (*str != '\0')
+			format++; 
+			if (*format == 'c')
 			{
-				s++;
-				str++;
+				char ch = va_arg(args, int); 
+				write(STDOUT_FILENO, &ch, 1);
+				count++;
 			}
-			str = strstart;
-			write(STDOUT_FILENO, str, s);
-			n += 2;
+			else if (*format == 's')
+			{
+				char *str = va_arg(args, char *);
+				int len = 0;
+				while (str[len] != '\0')
+				{
+					len++;
+				}
+				write(STDOUT_FILENO, str, len);
+				count += len;
+			}
+			else if (*format == '%')
+			{
+				write(STDOUT_FILENO, "%", 1);
+				count++;
+			}
 		}
-
-		if (*n == '%' && *(n + 1) == 'c')
+		else
 		{
-
-			int cha = va_arg(ap, int);
-			write(STDOUT_FILENO, &cha, 1);
-			n += 2;
+			write(STDOUT_FILENO, format, 1);
+			count++;
 		}
-
-		write(STDOUT_FILENO, n, 1);
-		n++;
+		format++;
 	}
 
-	va_end(ap);
+	va_end(args);
 
-	return (i);
+	return count;
 }
