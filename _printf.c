@@ -7,6 +7,10 @@ int _printf(const char *format, ...)
 
 	int count = 0; 
 
+	if( *format == NULL)
+	{
+	return (0);
+	}
 	while (*format != '\0')
 	{
 		if (*format == '%')
