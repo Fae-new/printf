@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int _printf(char *n, ...)
+int _printf(const char *n, ...)
 {
 	va_list ap;
 	va_start(ap, n);
