@@ -8,6 +8,11 @@ int _printf(const char *format, ...)
 	va_list args;
 	va_start(args, format);
 
+
+
+if (format == NULL)
+return (-1);
+
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -16,11 +21,7 @@ int _printf(const char *format, ...)
 
 			if (*format != 'c' && *format != 's' && *format != 'd' && *format != 'i' && *format != '%')
 			{
-				write(STDOUT_FILENO, "Invalid format specifier", sizeof("Invalid format specifier") - 1);
-				count += sizeof("Invalid format specifier") - 1;
-
-				format++;
-				continue;
+				return (-1);
 			}
 
 			if (*format == 'c')
@@ -59,3 +60,4 @@ int _printf(const char *format, ...)
 
 	return count;
 }
+
