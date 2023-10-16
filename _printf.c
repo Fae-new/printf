@@ -7,9 +7,9 @@ int _printf(const char *format, ...)
 
 	int count = 0; 
 
-	if( *format == NULL)
+	if( format == NULL)
 	{
-	return (0);
+	return (-1);
 	}
 	while (*format != '\0')
 	{
@@ -37,6 +37,11 @@ int _printf(const char *format, ...)
 			{
 				write(STDOUT_FILENO, "%", 1);
 				count++;
+			}
+
+			else 
+			{
+			reuturn (-1);	
 			}
 		}
 		else
