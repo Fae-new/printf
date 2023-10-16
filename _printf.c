@@ -22,27 +22,6 @@ int _printf(const char *format, ...)
 				write(STDOUT_FILENO, &ch, 1);
 				count++;
 			}
-			else if (*format == 's')
-			{
-				char *str = va_arg(args, char *);
-				int len = 0;
-				while (str[len] != '\0')
-				{
-					len++;
-				}
-				write(STDOUT_FILENO, str, len);
-				count += len;
-			}
-			else if (*format == '%')
-			{
-				write(STDOUT_FILENO, "%", 1);
-				count++;
-			}
-
-			else 
-			{
-			reuturn (-1);	
-			}
 		}
 		else
 		{
