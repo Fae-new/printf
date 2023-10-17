@@ -18,7 +18,7 @@ int count = 0;
 char *str = va_arg(args, char *);
 
 int len = 0;
-    
+
 while (str[len] != '\0')
 {
 len++;
