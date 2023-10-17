@@ -12,42 +12,39 @@
  * Return: The number of characters printed (excluding the null byte).
  *         Returns -1 if format is NULL or an invalid format specifier is found.
  */
-
 int print(const char *format, va_list args)
 {
-    int count = 0;
+int count = 0;
 
-    while (*format != '\0')
-    {
-        if (*format == '%')
-        {
-            format++;
+while (*format != '\0')
+{
+if (*format == '%')
+{
+format++;
+if (*format == 'c')
+{
+char ch = va_arg(args, int);
+    
+write(STDOUT_FILENO, &ch, 1);
+count++;
+}
+else if (*format == 's')
+count += printstr(args);
 
-            if (*format == 'c')
-            {
-                char ch = va_arg(args, int);
-
-                write(STDOUT_FILENO, &ch, 1);
-                count++;
-            }
-            else if (*format == 's')
-                count += printstr(args);
-
-            else if (*format == '%')
-            {
-                write(STDOUT_FILENO, "%", 1);
-                count++;
-            }
-            else
-                return (-1);
-        }
-        else
-        {
-            write(STDOUT_FILENO, format, 1);
-            count++;
-        }
-        format++;
-    }
-
-    return (count);
+else if (*format == '%')
+{
+write(STDOUT_FILENO, "%", 1);
+count++;
+}
+else
+return (-1);
+}
+else
+{
+write(STDOUT_FILENO, format, 1);
+count++;
+}
+format++;
+}
+return (count);
 }
