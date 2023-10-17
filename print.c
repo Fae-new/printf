@@ -57,12 +57,7 @@ int print(const char *format, va_list args)
                     return (-1);
                 }
             }
-            else if (*format == 'b') 
-                {
-        unsigned int num = va_arg(args, unsigned int);
-        print_binary(num);
-        count += sizeof(unsigned int) * 8;
-         }
+           
             else
                 return (-1);
         }
