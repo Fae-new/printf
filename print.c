@@ -61,7 +61,7 @@ int print(const char *format, va_list args)
                 {
         unsigned int num = va_arg(args, unsigned int);
         print_binary(num);
-        count += sizeof(unsigned int) * 8; // Count the number of binary digits
+        count += sizeof(unsigned int) * 8;
          }
             else
                 return (-1);
