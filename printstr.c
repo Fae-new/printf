@@ -13,16 +13,17 @@
 
 int printstr(va_list args)
 {
-    int count = 0;
+int count = 0;
 
-    char *str = va_arg(args, char *);
+char *str = va_arg(args, char *);
 
-    int len = 0;
-    while (str[len] != '\0')
-    {
-        len++;
-    }
-    write(STDOUT_FILENO, str, len);
-    count += len;
-    return (count);
+int len = 0;
+    
+while (str[len] != '\0')
+{
+len++;
+}
+write(STDOUT_FILENO, str, len);
+count += len;
+return (count);
 }
