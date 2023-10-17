@@ -9,13 +9,14 @@
  */
 
 void print_binary(unsigned int num) {
+    int i;
     if (num == 0) {
         write(STDOUT_FILENO, "0", 1);
         return;
     }
 
     bool leadingZero = true;
-    for (int i = sizeof(num) * 8 - 1; i >= 0; i--) {
+    for (i = sizeof(num) * 8 - 1; i >= 0; i--) {
         bool bit = num & (1 << i);
         if (bit) {
             write(STDOUT_FILENO, "1", 1);
