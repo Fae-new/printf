@@ -11,19 +11,15 @@
  *         Returns 0 if the va_list does not contain a valid string.
  */
 
-int printstr(va_list args)
+int printstr(char *str)
 {
-int count = 0;
 
-char *str = va_arg(args, char *);
+    int len = 0;
+    while (str[len] != '\0')
+    {
+        len++;
+    }
+    write(STDOUT_FILENO, str, len);
 
-int len = 0;
-
-while (str[len] != '\0')
-{
-len++;
-}
-write(STDOUT_FILENO, str, len);
-count += len;
-return (count);
+    return (len);
 }
