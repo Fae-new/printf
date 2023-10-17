@@ -10,7 +10,7 @@
  * the formatted output to the standard output.
  *
  * Return: The number of characters printed (excluding the null byte).
- *         Returns -1 if format is NULL or an invalid format specifier is found.
+ * Returns -1 if format is NULL or an invalid format specifier is found.
  */
 int print(const char *format, va_list args)
 {
@@ -24,7 +24,7 @@ format++;
 if (*format == 'c')
 {
 char ch = va_arg(args, int);
-    
+
 write(STDOUT_FILENO, &ch, 1);
 count++;
 }
