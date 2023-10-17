@@ -5,9 +5,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-int _printf(const char *format, ...);
+char *int_to_string(int num);
+int printstr(char *str);
 int print(const char *format, va_list args);
-int printstr(va_list args);
-
-
+int _printf(const char *format, ...);
 #endif
