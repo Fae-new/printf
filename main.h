@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 void print_binary(unsigned int num);
 char *int_to_string(int num);
 int printstr(char *str);
