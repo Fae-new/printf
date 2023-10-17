@@ -10,7 +10,12 @@
 char *int_to_string(int num)
 {
     int i = 0;
+    int rev;
+    int length;
     int originalNum = num;
+
+    char *revertedstr;
+    char *str;
 
     while (num > 0)
     {
@@ -20,15 +25,15 @@ char *int_to_string(int num)
 
     num = originalNum;
 
-    char *revertedstr = malloc(i + 1);
-    char *str = malloc(i + 1);
+    revertedstr = malloc(i + 1);
+    str = malloc(i + 1);
 
     if (revertedstr == NULL || str == NULL)
     {
         return NULL;
     }
 
-    int length = i - 1;
+    length = i - 1;
 
     while (num > 0)
     {
@@ -37,7 +42,7 @@ char *int_to_string(int num)
         num /= 10;
     }
 
-    int rev = 0;
+    rev = 0;
 
     while (length < i - 1)
     {
