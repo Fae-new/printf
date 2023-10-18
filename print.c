@@ -57,7 +57,6 @@ int print(const char *format, va_list args)
                     return (-1);
                 }
             }
-           
             else
                 return (-1);
         }
